@@ -35,7 +35,7 @@ for div in headline:
 
 url = ["https://www.sephora.fr/shop-shop/?srule=rank&sz=28&start=0&t2scookie=rank1&"]
 
-for i in range(56,n4,28):
+for i in range(28,n4,28):
     new_url = "https://www.sephora.fr/shop-shop/?srule=rank&sz=28&start="+str(i)+"&t2scookie=rank1&"
     url.append(new_url)
     
@@ -77,7 +77,7 @@ df.drop_duplicates(subset="product_pid",keep="first",inplace=True)
 now = datetime.now()
 df['extraction_date'] = now
 
-write_path='sephora.fr_'+date.today()+'.txt'
+write_path='sephora.fr_'+str(date.today())+'.txt'
 df.to_csv(write_path, sep='\t', index=False)
     
     
