@@ -10,12 +10,15 @@ import pandas as pd
 from datetime import datetime
 from datetime import date
 import boto3
+import os
  
 from selenium import webdriver
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 import pandas as pd
 import time
+
+from config import ACCESS_KEY,SECRET_KEY
 
 st = datetime.now()
     
@@ -115,7 +118,7 @@ df.to_csv(write_path, sep='\t', index=False)
     
 ### send data to S3 bucket    
 
-from config import ACCESS_KEY,SECRET_KEY
+
 
 s3 = boto3.client(
 "s3",
@@ -132,5 +135,5 @@ Filename=filename,
 Key=filename
 )
 
-
+os.remove(write_path)
 print(datetime.now() - st)
