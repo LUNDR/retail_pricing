@@ -1,1 +1,7 @@
 .spyproject 
+config.py
+__pycache__
+.Rdata
+.Rhistory
+expedia_data
+*.txt
