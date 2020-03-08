@@ -79,7 +79,7 @@ if __name__ == "__main__":
     
     
     _BUCKET_NAME = 'retailscrapes'
-    _PREFIX = 'expedia/'
+    _PREFIX = 'expedia_data/'
 
 
     file_list = ListFiles(s3,_BUCKET_NAME,_PREFIX)
