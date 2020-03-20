@@ -15,7 +15,6 @@ import os
 from selenium import webdriver
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
-import pandas as pd
 import time
 
 from config import ACCESS_KEY,SECRET_KEY
@@ -73,7 +72,9 @@ for j in month:
                 driver.get(u)
                 time.sleep(10)
                 
+                print(driver.get(u))
                 
+            
                
                 # click x to close pop up
                 try:
@@ -113,7 +114,7 @@ df['extraction_date'] = datetime.now()
 
 
 
-write_path='expedia_data/expedia.com_pm'+dep+"_"+arr+str(date.today())+'.txt'
+write_path='expedia_data/expedia.com'+dep+"_"+arr+str(date.today())+'.txt'
 df.to_csv(write_path, sep='\t', index=False)
     
 ### send data to S3 bucket    
