@@ -49,7 +49,7 @@ https://launchpad.net/ubuntu/trusty/+package/chromium-chromedriver
 chromedriver_path = '/usr/lib/chromium-browser/chromedriver'
 chromedriver_path = '/usr/bin/chromedriver'
 
-dayList = list(range(31,32))
+dayList = list(range(1,32))
 monthList = list(range(3,13))
 yearList = [2020]
 
@@ -78,7 +78,7 @@ with webdriver.Chrome(chromedriver_path, options=options) as driver:
                 u = "https://www.expedia.com/Flights-Search?flight-type=on&starDate=" + date_stamp +"&mode=search&trip=oneway&leg1=from%3A" + dep+"%2C+England%2C+UK+%28LON-All+Airports%29%2Cto%3A"+arr+"%2C+Switzerland+%28ZRH%29%2Cdeparture%3A" + date_stamp +"TANYT&passengers=children%3A0%2Cadults%3A1%2Cseniors%3A0%2Cinfantinlap%3AY"
         
                 driver.get(u)      
-                time.sleep(5)
+                time.sleep(10)
         					
         			# click x to close pop up
                 try:
