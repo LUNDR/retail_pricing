@@ -102,7 +102,7 @@ with webdriver.Chrome(chromedriver_path, options=options) as driver:
                 pass		
 
 df['extraction_date'] = datetime.now()
-write_path='expedia_data_'+dep+"_"+arr+str(date.today())+'.tsv'
+write_path='expedia_data/'+dep+"_"+arr+str(date.today())+'.tsv'
 df.to_csv(write_path, sep='\t', index=False)
 
 
