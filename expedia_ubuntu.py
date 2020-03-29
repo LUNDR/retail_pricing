@@ -38,6 +38,7 @@ for j in month:
       
         try:
             if  datetime(year, j,i) < datetime.now():
+                print(datetime(year, j,i))
                 pass
             else:
             
@@ -79,9 +80,11 @@ for j in month:
                 service_args=service_args,
                 service_log_path=service_log_path)
                 
-                
+                print('arguments added')
                 
                 driver.get(u)
+                
+                print('driver accessed')
                 
                 time.sleep(10)
                 
