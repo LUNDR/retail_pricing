@@ -109,6 +109,8 @@ if __name__ == "__main__":
     
     df = df.loc[df['price'].notnull()]
     
+    
+    df.price = df.price.map(lambda x :''.join(x.split(',')))
     df.price = df.price.map(lambda x : float(x.split('$')[1]))
     
     
