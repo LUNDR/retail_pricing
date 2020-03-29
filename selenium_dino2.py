@@ -5,6 +5,13 @@ import time
 import pandas as pd
 from selenium import webdriver
 from pyvirtualdisplay import Display
+import boto3
+import os
+import time
+
+from config import ACCESS_KEY,SECRET_KEY
+
+st = datetime.now()
 
 display = Display(visible=0, size=(1920, 1080))
 display.start()
@@ -41,8 +48,8 @@ https://launchpad.net/ubuntu/trusty/+package/chromium-chromedriver
 chromedriver_path = '/usr/lib/chromium-browser/chromedriver'
 chromedriver_path = '/usr/bin/chromedriver'
 
-dayList = list(range(1,3))
-monthList = [4]
+dayList = list(range(1,32))
+monthList = list(range(3,13))
 yearList = [2020]
 
 options = webdriver.ChromeOptions()
@@ -97,6 +104,21 @@ write_path='expedia_data_'+dep+"_"+arr+str(date.today())+'.tsv'
 df.to_csv(write_path, sep='\t', index=False)
 
 
-#with webdriver.Chrome('/usr/lib/chromium-browser/chromedriver') as driver:
-#	driver.get('http://20min.ch')
-	
+s3 = boto3.client(
+"s3",
+aws_access_key_id=ACCESS_KEY,
+aws_secret_access_key=SECRET_KEY
+)
+bucket_resource = s3
+
+filename = write_path
+
+bucket_resource.upload_file(
+Bucket = 'retailscrapes',
+Filename=filename,
+Key=filename
+)
+
+os.remove(write_path)
+print(datetime.now() - st)
+
