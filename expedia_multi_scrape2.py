@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Apr  2 16:27:51 2020
+
+@author: lundr
+"""
+
 import itertools
 from datetime import datetime
 from datetime import date
@@ -61,16 +68,16 @@ options = webdriver.ChromeOptions()
 df = pd.DataFrame(columns = ['date', 'airline','route','time','price'])
 
 London = 'London+%28LON-All+Airports'
-NY = 'New+York+%28NYC-All+Airports'
-Zurich = 'Zurich%2C+Switzerland+%28ZRH-Zurich'
-Paris = 'Paris+%28PAR-All+Airports'
-#Dubai = 'Dubai+%28DXB-All+Airports'
-#Dublin = 'Dublin+%28DUB-Dublin'
+#NY = 'New+York+%28NYC-All+Airports'
+#Zurich = 'Zurich%2C+Switzerland+%28ZRH-Zurich'
+#Paris = 'Paris+%28PAR-All+Airports'
+Dubai = 'Dubai+%28DXB-All+Airports'
+Dublin = 'Dublin+%28DUB-Dublin'
 #Madrid = 'Madrid+%28MAD-All+Airports'
-#Istanbul = 'Istanbul+%28IST-All+Airports'
+Istanbul = 'Istanbul+%28IST-All+Airports'
 #Rio = 'Rio+de+Janeiro+%28RIO-All+Airports'
 
-places = [London, NY, Zurich, Paris]
+places = [London, Dubai, Dublin, Istanbul]
 
 for pair in itertools.permutations(places, r=2):
 
