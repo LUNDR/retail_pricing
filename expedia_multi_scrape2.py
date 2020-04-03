@@ -135,7 +135,7 @@ for pair in itertools.permutations(places, r=2):
                     pass		
     
     df['extraction_date'] = datetime.now()
-    write_path='expedia_data/'+dep+"_"+arr+str(date.today())+'.tsv'
+    write_path='expedia_data/'+dep_name+"_"+arr_name+str(date.today())+'.tsv'
     df.to_csv(write_path, sep='\t', index=False)
     s3_upload(access_key,secret_key, write_path)    
     os.remove(write_path)
