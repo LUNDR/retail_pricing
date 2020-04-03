@@ -102,7 +102,10 @@ Paris = 'Paris+%28PAR-All+Airports'
 #Rio = 'Rio+de+Janeiro+%28RIO-All+Airports'
 
 places = [London, NY, Zurich, Paris]
-df = pd.DataFrame(columns = ['date', 'airline','route','time','price'])
+
+# set upload details
+access_key = ACCESS_KEY
+secret_key = SECRET_KEY
 
 
 # generate list of day, month, year tuples in the correct format for the url
@@ -115,7 +118,10 @@ for i in range(1,275):
     y = f"{ date_ .year:04d}"
     date_tup = (d,m,y)
     dates.append(date_tup)
-        			
+
+# Create empty dataframefor collecting data 
+
+df = pd.DataFrame(columns = ['date', 'airline','route','time','price'])     			
 
 
 for pair in itertools.permutations(places, r=2):
@@ -159,8 +165,7 @@ for pair in itertools.permutations(places, r=2):
     df['extraction_date'] = datetime.now()
     write_path='expedia_data/'+dep+"_"+arr+str(date.today())+'.tsv'
     df.to_csv(write_path, sep='\t', index=False)
-    
-    
+    s3_upload(access_key,secret_key, write_path)    
     os.remove(write_path)
     print(datetime.now() - st)
 
