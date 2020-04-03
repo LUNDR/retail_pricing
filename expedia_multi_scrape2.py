@@ -6,6 +6,7 @@ Created on Thu Apr  2 16:27:51 2020
 """
 
 import itertools
+import datetime as dt
 from datetime import datetime
 from datetime import date
 import time
@@ -77,14 +78,14 @@ df = pd.DataFrame(columns = ['date', 'airline','route','time','price'])
 
 # generate list of day, month, year tuples in the correct format for the url
 dates = []
-base = datetime.datetime.today()
+base = datetime.today()
 for i in range(1,275):
-    dt = base + datetime.timedelta(days=i)
-    d = f"{dt.day:02d}"
-    m = f"{dt.month:02d}"
-    y = f"{dt.year:04d}"
-    dt_tup = (d,m,y)
-    dates.append(dt_tup)
+    date_ = base + dt.timedelta(days=i)
+    d = f"{ date_ .day:02d}"
+    m = f"{ date_ .month:02d}"
+    y = f"{ date_ .year:04d}"
+    date_tup = (d,m,y)
+    dates.append(date_tup)
         			
 
 
